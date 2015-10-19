@@ -1,0 +1,22 @@
+
+#editeur {
+	width:71.5%;
+	height:260px;
+	margin-bottom:10px;
+	background:rgba(0,0,0,.4);
+	border:1px solid #333;
+}
+
+form{
+	padding:10px;
+}
+
+fieldset{
+	background:#fff;
+}
+
+label {
+padding-top:10px;
+	display:block;
+}
+

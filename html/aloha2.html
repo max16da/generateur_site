@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr" xml:lang="fr">
+<head>
+    <!-- ##LOAD ALOHA START## -->
+    <link href="http://cdn.aloha-editor.org/latest/css/aloha.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/vendor/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/require.js"></script>
+<!--
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+-->
+<script>
+    var Aloha = window.Aloha || ( window.Aloha = {} );
+     
+    Aloha.settings = {
+        locale: 'en',
+        plugins: {
+            format: {
+                config: ['removeFormat', 'address', 'command', 'details', 'dfn', 'header', 'ins', 'menu', 'nav', 'ruby', 'section', 'var', 'a', 'abbr', 'b', 'blockquote', 'br', 'caption', 'cite', 'code', 'col', 'colgroup', 'dd', 'del', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'small', 'strong', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'u', 'ul', 'span', 'hr', 'object', 'div' ]
+            },
+            link: {
+                config : [ 'a' ],
+            },
+            list: {
+                config : [ 'ul', 'ol' ],
+                editables : {
+                    '#title'    : [  ]
+                }
+            },
+            image: {
+                'fixedAspectRatio': true,
+                'maxWidth': 1024,
+                'minWidth': 10,
+                'maxHeight': 786,
+                'minHeight': 10,
+                'globalselector': '.global',
+                'ui': {
+                    'oneTab': false
+                },
+                editables : {
+                    '#title'    : [  ]
+                }
+            }
+        },
+        sidebar: {
+            disabled: true
+        },
+        contentHandler: {
+            allows: {
+                elements: ['removeFormat', 'address', 'command', 'details', 'dfn', 'header', 'ins', 'menu', 'nav', 'ruby', 'section', 'var', 'a', 'abbr', 'b', 'blockquote', 'br', 'caption', 'cite', 'code', 'col', 'colgroup', 'dd', 'del', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'small', 'strong', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'u', 'ul', 'span', 'hr', 'object', 'div' ],
+                attributes: {
+                    'a': ['href', 'title', 'id', 'class', 'target', 'data-gentics-aloha-repository', 'data-gentics-aloha-object-id'],
+                    'div': [ 'id', 'class'],
+                    'abbr': ['title'],
+                    'blockquote': ['cite'],
+                    'br': ['class'],
+                    'col': ['span', 'width'],
+                    'colgroup': ['span', 'width'],
+                    'img': ['align', 'alt', 'height', 'src', 'title', 'width', 'class'],
+                    'ol': ['start', 'type'],
+                    'q': ['cite'],
+                    'p': ['class'],
+                    'table': ['summary', 'width'],
+                    'td': ['abbr', 'axis', 'colspan', 'rowspan', 'width'],
+                    'th': ['abbr', 'axis', 'colspan', 'rowspan', 'scope', 'width'],
+                    'ul': ['type'],
+                    'span': ['class','style','lang','xml:lang']
+                },
+                protocols: {
+                    'a': {'href': ['ftp', 'http', 'https', 'mailto', '__relative__']},
+                    'blockquote': {'cite': ['http', 'https', '__relative__']},
+                    'img': {'src' : ['http', 'https', '__relative__']},
+                    'q': {'cite': ['http', 'https', '__relative__']}
+                }
+            }
+        }
+    };
+</script>
+ 
+<script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/aloha.js" data-aloha-plugins="
+    common/format,
+    common/ui,
+    common/abbr,
+    common/align,
+    common/block,
+    common/dom-to-xhtml,
+    common/characterpicker,
+    common/commands,
+    common/contenthandler,
+    common/highlighteditables,
+    common/horizontalruler,
+    common/image,
+    common/link,
+    common/list,
+    common/paste,
+    common/table,
+    common/undo,
+    extra/captioned-image,
+    extra/cite,
+    extra/draganddropfiles,
+    extra/flag-icons,
+    extra/formatlesspaste,
+    extra/headerids,
+    extra/hints,
+    extra/listenforcer,
+    extra/metaview,
+    extra/numerated-headers,
+    extra/ribbon,
+    extra/toc,
+    extra/validation,
+    extra/wai-lang,
+    common/contenthandler"></script>
+ 
+<!-- turn an element into editable Aloha continuous text -->
+<script type="text/javascript">
+Aloha.ready(function() {
+    $('#main').aloha();
+});
+
+</script>
+    <!-- ##LOAD ALOHA END## -->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Getting Started with Aloha Editor</title>
+        <link rel="stylesheet" href="index.css" type="text/css"/>
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+<body>
+    <article id="main">
+        <p>8888888Getting started with Aloha Editor!</p>
+        <div class="textarea"><p>Getting started with Aloha Editor!</p></div>
+        <p class="paragraphe">enim eius asperitati, ubi inminuta vel laesa amplitudo imperii dicebatur, et iracundae suspicionum quantitati proximorum cruentae blanditiae exaggerantium incidentia et dolere inpendio simulantium, si principis periclitetur vita, a cuius salute velut filo pendere statum orbis terrarum fictis vocibus exclamabant.</p>
+		<p class="paragraphe">Post quorum necem nihilo lenius ferociens Gallus ut leo cadaveribus pastus multa huius modi scrutabatur. quae singula narrare non refert, me professione modum, quod evitandum est, excedamus.</p>
+    </article>
+    
+    <script>
+		var contenu= { //Fetch form data
+            'content': $("#main").html() //Store name fields value
+        };
+		$.post("envoi.php",contenu)
+
+		.done(function() {
+			alert( "la page est créée");
+		})
+		 
+		.fail(function() {
+		  alert( "erreur fatale");
+		});
+    </script>
+</body>
+</html>

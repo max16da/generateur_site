@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+  <head>
+	  <meta charset="UTF-8" />
+    <title>Upload d'une image sur le serveur !</title>
+  </head>
+  <body>
+
+    <!-- Debut du formulaire -->
+   <form enctype="multipart/form-data" action="upload.php" method="post">
+		<fieldset>
+			<legend>Formulaire</legend>
+			<input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+			Transfère le fichier <input type="file" name="monfichier" />
+			<input type="submit" />
+		</fieldset>
+    </form>
+    <!-- Fin du formulaire -->
+  </body>
+</html>

@@ -1,0 +1,22 @@
+
+#namePage {
+	display:none;
+	width:70%;
+	height:260px;
+	background:rgba(0,0,0,.4);
+	border:1px solid #333;
+}
+
+form{
+	padding:10px;
+}
+
+fieldset{
+	background:#fff;
+}
+
+label {
+padding-top:10px;
+	display:block;
+}
+
