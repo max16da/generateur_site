@@ -1,0 +1,6 @@
+# Ignorer les fichiers de sauvegarde
+*~
+
+# Ignorer les fichiers de pré-compilation python
+*.odt
+
