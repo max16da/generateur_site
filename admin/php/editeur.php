@@ -1,7 +1,3 @@
-
-<script src="js/ajoutpage.js" defer></script>
-
-
 <!--éditeur aloha-->
 
     <!-- ##LOAD ALOHA START## -->
@@ -121,25 +117,22 @@ Aloha.ready(function() {
 </script>
 		<section id="editeur">	
 			<button id="ajouter" onclick="nouvellePage('form');" >Créer une page</button>
-		<form id="form" method="post">
-			<fieldset>
-			<label>Nom de la page</label>
-			<input type="text" name="nom" id="nom" placeholder="nom de la page"/>
-			<label>Choix du template</label>
-			<input type="radio" name="options[]" id="option" value="template1"><img src="../template/images/template0.png" alt="template" width="200"/>
-			<input type="radio" name="options[]" id="option" value="template2"><img src="../images/tpl.png" alt="template" width="200"/>
-			</fieldset>
-			<input type="button" id="publier" value="Créer"/>
-		</form>	
-<!--
-		<a href="" onclick="window.location='http://localhost/max/generateurHTML/pages/'+document.getElementById('nom').value+'.html';" target="_blank" id="preview" >Aperçu</a>	
--->
-		
+			<form id="form" method="post">
+				<fieldset>
+				<label>Nom de la page</label>
+				<input type="text" name="nom" id="nom" placeholder="nom de la page"/>
+				<label>Choix du template</label>
+				
+				<input type="radio" name="options[]" id="template" value="template2"><img src="../template/images/template0.png" alt="template" width="200"/>
+				<input type="radio" name="options[]" id="template" value="template1"><img src="../template/images/template0.png" alt="template" width="200"/>
+				</fieldset>
+				<input type="button" id="publier" value="Créer"/>
+			</form>	
 		</section>
 
 <!--Création de l'interface de téléchargement d'images-->
 		<iframe src="html/fileupload.html" id="iframe" name="iframe" width="550" height="60"></iframe> 
-		<a href="html/fileupload.html" target="iframe" onclick="uploader();return true"><img src="images/reload.png"/></a> 
+		<a href="html/fileupload.html" target="iframe" onclick="uploader();"><img src="images/reload.png"/></a> 
 		<p id="listeImage"></p>
 
 <!--Bouton de mise à jour de la page courante-->
@@ -158,14 +151,15 @@ Aloha.ready(function() {
 <script> 
 		$("#publier").click(function(){
 		var contenu= { //Fetch form data
-            'content': $("#main").html(),
+            //~ 'content': $("#main").html(),
             'nom': $("#nom").val(),
-            'option':$("#option").val()
+            'option':$("#template").val()
         };
 		$.post("php/envoi.php",contenu)
-		console.log(contenu)
+
 		.done(function() {
 			alert( "la page est créée");
+			//~ alert ($("#template").val());
 			window.location="http://localhost/max/generateurHTMLcopie/admin/index.php?page="+$('#nom').val();
 		})
 		 
@@ -177,22 +171,24 @@ Aloha.ready(function() {
 
 <!--script qui met à jour les nouvelles modifications effectuées sur la page courante-->
 <script> 
-	$("#maj").click(function(){
+	$("#maj").click(function(){		
 		var contenuMain= { //Fetch form data
-            'content': $("#main").html
+            'conten': $("#main").html()
         };   
 		$.post("php/majour.php",contenuMain)
 
 		.done(function() {	
-			alert( "la page a été mise à jour");
+			alert("la page a été mise à jour");
 		})
 		 
 		.fail(function() {
 		  alert( "erreur fatale");
 		});
+
 	});
+	
 </script>
 
-  
+<script src="js/ajoutpage.js" defer></script>
 
 <!--extra/numerated-headers, table des matières-->
