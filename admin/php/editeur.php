@@ -1,4 +1,9 @@
 
+<script src="js/ajoutpage.js" defer></script>
+
+
+<!--éditeur aloha-->
+
     <!-- ##LOAD ALOHA START## -->
     <link href="http://cdn.aloha-editor.org/latest/css/aloha.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/vendor/jquery-1.7.2.js"></script>
@@ -112,10 +117,11 @@ Aloha.ready(function() {
     $('#main').aloha();
 });
 
+//~ script pour la création d'une nouvelle page avec attribution d'un nom de page et choix d'un template 
 </script>
-
 		<section id="editeur">	
-		<form action="php/template.php" method="post">
+			<button id="ajouter" onclick="nouvellePage('form');" >Créer une page</button>
+		<form id="form" method="post">
 			<fieldset>
 			<label>Nom de la page</label>
 			<input type="text" name="nom" id="nom" placeholder="nom de la page"/>
@@ -123,22 +129,22 @@ Aloha.ready(function() {
 			<input type="radio" name="options[]" id="option" value="template1"><img src="../template/images/template0.png" alt="template" width="200"/>
 			<input type="radio" name="options[]" id="option" value="template2"><img src="../images/tpl.png" alt="template" width="200"/>
 			</fieldset>
-		</form>
-		<button id="publier" >Créer une page</button>	
+			<input type="button" id="publier" value="Créer"/>
+		</form>	
+<!--
 		<a href="" onclick="window.location='http://localhost/max/generateurHTML/pages/'+document.getElementById('nom').value+'.html';" target="_blank" id="preview" >Aperçu</a>	
-		<button id="maj" >Mettre à jour</button>
+-->
+		
 		</section>
+
+<!--Création de l'interface de téléchargement d'images-->
 		<iframe src="html/fileupload.html" id="iframe" name="iframe" width="550" height="60"></iframe> 
 		<a href="html/fileupload.html" target="iframe" onclick="uploader();return true"><img src="images/reload.png"/></a> 
 		<p id="listeImage"></p>
 
-		
- <!--
-    <aside>
-		<?php //require_once('../upload/fileupload.html');?>
-	</aside>
---> 
-    
+<!--Bouton de mise à jour de la page courante-->
+		<input type="button" id="maj" value="Mettre à jour"/>	
+ 
 <!--script qui affiche l'iframe du upload après utilisation-->
 <script> 
 	function uploader() {
@@ -150,24 +156,43 @@ Aloha.ready(function() {
 
 <!--script qui récupère les informations inséreés en cliquant sur le bouton publier-->
 <script> 
-	$("#publier").click(function(){
+		$("#publier").click(function(){
 		var contenu= { //Fetch form data
             'content': $("#main").html(),
             'nom': $("#nom").val(),
             'option':$("#option").val()
         };
 		$.post("php/envoi.php",contenu)
-
+		console.log(contenu)
 		.done(function() {
 			alert( "la page est créée");
+			window.location="http://localhost/max/generateurHTMLcopie/admin/index.php?page="+$('#nom').val();
 		})
 		 
 		.fail(function() {
 		  alert( "erreur fatale");
 		});
 	});
-    </script>
+</script>	
 
-</body>
-</html>
+<!--script qui met à jour les nouvelles modifications effectuées sur la page courante-->
+<script> 
+	$("#maj").click(function(){
+		var contenuMain= { //Fetch form data
+            'content': $("#main").html
+        };   
+		$.post("php/majour.php",contenuMain)
+
+		.done(function() {	
+			alert( "la page a été mise à jour");
+		})
+		 
+		.fail(function() {
+		  alert( "erreur fatale");
+		});
+	});
+</script>
+
+  
+
 <!--extra/numerated-headers, table des matières-->

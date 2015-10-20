@@ -3,7 +3,7 @@
 
 function nouvellePage(id) {
 	if (document.getElementById(id).style.display!="block") {
-		document.getElementById("namePage").style.display="block";
+		document.getElementById("form").style.display="block";
 	}
 	return true;
 }

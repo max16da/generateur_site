@@ -16,7 +16,7 @@ if (!(in_array($extensionFichier, $extensionsAutorisees))) {
                                      $repertoireDestination.$nomDestination)) {
 		
 		//~ echo "L'image ".$nomDestination." a été uploadée";
-		echo "<script>parent.document.getElementById('listeImage').textContent='http://".$_SERVER['SERVER_NAME'].str_replace('php/fileupload.php',"images/",$_SERVER["REQUEST_URI"]).$nomDestination."';</script>";
+		echo "<script>parent.document.getElementById('listeImage').textContent='http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."/images/".$nomDestination."';</script>";
 		//~ echo "<script>parent.document.getElementById('listeImage').textContent='http://".$_SERVER['SERVER_NAME'].str_replace('fileupload.php',"images/",$_SERVER["REQUEST_URI"]).$nomDestination."';</script>";
         //~ echo "Le fichier temporaire ".$_FILES["monfichier"]["tmp_name"].
                 //~ " a été déplacé vers ".$nomDestination;
