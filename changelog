@@ -1,0 +1,13 @@
+Changelog
+
+[22-10-2015]
+- bouton apercu DONE editeur.php:123
+- liste des pages et des images
+
+[23-10-2015]
+- Mise en place du menuGlobal editeur.php:238
+- Création de la partie "voulez-vous quitter ou enregistrer?" dans editeur.php:194
+- bouton mise à jour pour index.html majour.php
+- css sur le menuGlobal
+- Modification du code de la page index.html
+- Modification du code de la page index.php

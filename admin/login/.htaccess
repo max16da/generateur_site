@@ -1,0 +1,7 @@
+AuthName "Page d'administration protégée"
+
+AuthType Basic
+
+AuthUserFile "localhost/max/www/generateurHTMLcopie/admin/protection/.htpasswd"
+
+Require valid-user

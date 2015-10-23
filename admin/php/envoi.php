@@ -7,4 +7,5 @@
 	$fp=fopen('../../pages/'.$_POST["nom"].'.html','w');
 	fwrite($fp,$header.$nav.$tempMain.$footer);
 	fclose($fp);
+
 ?>

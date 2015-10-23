@@ -1,0 +1,15 @@
+TODO
+
+[22-10-2015]
+- lien vers la page : aperçu
+- bouton retracté pour le menu gauche
+- liste des pages  (php utiliser .scandir)
+- supprimer des pages et les mettre dans un dossier corbeille
+- Quand on appuie sur "créer la page" ou ouvre une page dans la liste des pages, on a un message alert (quitter/enregistrer)
+- menu du site selon les pages créées avec eventuellemnt un sous menu.
+
+[23-10-2015]
+- supprimer des pages et les mettre dans un dossier corbeille
+- Quand on appuie sur "créer la page" ou ouvre une page dans la liste des pages, on a un message alert (quitter/enregistrer)
+- menu du site selon les pages créées avec eventuellemnt un sous menu.
+- réorganisation des fichiers

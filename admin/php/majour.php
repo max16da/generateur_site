@@ -1,41 +1,37 @@
 <?php
-	//~ $main=$_POST['content'];
-	//~ $findex=fopen('../../pages/'.$_POST["nom"].'.html','w');
-	//~ $a=file_get_contents($contents);
-	//~ $re = "/<main>([\\s\\S]*?)<\\/main>/"; 
-	//~ $replace=preg_replace($re,'<main>'.$main.'</main>',$a);
-	//~ fclose($findex);
 
-	$main=$_POST['conten'];
-	$fp=fopen('../pageMain/data.html','w');
-	fwrite($fp,$main);
-	fclose($fp);
-	
-	$file='../pageMain/data.html';
-	$fim=fopen($file,'r');
-	$contents=fread($fim,filesize($filename));
-	//~ $re = "/<main>([\\s\\S]*?)<\\/main>/"; 
-	$fir=file_get_contents('../pageMain/data.html');
-	$filename='../pageMain/re.html';
-	$fi=fopen($filename,'w');
-	$replace=preg_replace("Tiarticle",$fir,$fi);
-	fwrite($fi,$replace);
-	fclose($fi);
+//~ if (isset($_GET['page'])) {
+	if($_POST['nom']=="index"){	
+		$main=$_POST['content'];
+		$fim=fopen('../../index.html','r+'); 
+		$a=file_get_contents('../../index.html');
+		$re = '!<article id="main">([\\s\\S]*?)</article>!Ui'; 
+		$replace=preg_replace($re,'<article id="main">'.$main.'</article>',$a);
+		fwrite($fim,$replace);
+		fclose($fim);
+	}
+	else {
+		$main=$_POST['content'];
+		$fim=fopen('../../pages/'.$_POST['nom'].'.html','r+'); 
+		$a=file_get_contents('../../pages/'.$_POST['nom'].'.html');
+		$re = '!<article id="main">([\\s\\S]*?)</article>!Ui'; 
+		$replace=preg_replace($re,'<article id="main">'.$main.'</article>',$a);
+		fwrite($fim,$replace);
+		fclose($fim);
+	}
+//~ }  
 
-	//~ $data=$_POST['conten'];
-	//~ $filename='../../pages/'.$_POST["nom"].'.html';
-	//~ $fmain=fopen($filename,'w');
-	//~ $contents=fread($fmain,filesize($filename));
-	//~ $filedata=file_get_contents('../pageMain/data.html');
-	//~ fwrite($fmain,$filedata);
-	//~ fclose($fmain);
-	//~ 
-	//~ $tempMain=file_get_contents('../../template/'.$_POST['option'].'.html');
-	//~ $filename='../pageMain/data.html';
-	//~ $fmain=fopen($filename,'w');
-	//~ $contents=fread($fmain,filesize($filename));
-	//~ $re = "/<main>([\\s\\S]*?)<\\/main>/"; 
-	//~ $replace=preg_replace($re,'<main>azerty</main>',$tempMain);
-	//~ fwrite($fp,$replace);
-	//~ fclose($fp);
+    
+//~ include("debug.php");   
+    //~ $data="";
+    //~ $main=$_POST['content'];
+    //~ $fim=fopen('../../pages/'.$_POST['nom'].'.html','r+'); 
+    //~ if ($a=file_get_contents('../../pages/'.$_POST['nom'].'.html')){
+		//~ $data.="get_content : ".$a;
+	//~ }
+    //~ $re = '!<article id="main">([\\s\\S]*?)</article>!Ui'; 
+    //~ $replace=preg_replace($re,'<article id="main">'.$main.'</article>',$a);
+    //~ fwrite($fim,$replace);
+    //~ fclose($fim);
+	//~ debug($data);
 ?>

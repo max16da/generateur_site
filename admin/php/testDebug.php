@@ -115,117 +115,42 @@ Aloha.ready(function() {
 
 //~ script pour la création d'une nouvelle page avec attribution d'un nom de page et choix d'un template 
 </script>
-	<section id="menuGlobal">
-		<input type="button" id="menuGauche" value="Menu"/>
+
+
 		<section id="editeur">	
 <!--Bouton de mise à jour de la page courante-->
-		<input type="button" id="maj" value="Enregistrer"/>
-        <a href="http://localhost/max/generateurHTMLcopie/pages/<?php echo $_GET['page']; ?>.html" target="onglet" id="view">Aperçu</a>	
-
-	<!--Création de l'interface de téléchargement d'images-->
-			<iframe src="html/fileupload.html" id="iframe" name="iframe"></iframe> 
-			<a href="html/fileupload.html" target="iframe" onclick="uploader();"><img src="images/reload.png"/></a> 
-			<p id="listeImage"></p>
-				
-			<input type="button" id="listePage" value="Liste des pages"/>
-				<ul id="liste">
-				</ul>
-				
-			<input type="button" id="Image" value="Liste des images uploader"/>
-				<ul id="image">
-				</ul>
-				
-			<button id="ajouter" onclick="nouvellePage('formulaire');" >Créer une page</button>
-			<section id="formulaire">
+		<input type="button" id="maj" value="Mettre à jour"/>
+			<button id="ajouter" onclick="nouvellePage('form');" >Créer une page</button>
 			<form id="form" method="post">
 				<fieldset>
 				<label>Nom de la page</label>
 				<input type="text" name="nom" id="nom" placeholder="nom de la page"/>
 				<label>Choix du template</label>
-				<section id="radio">
-					<div class="radio"><input type="radio" name="options" value="template1"/><img src="../template/images/screenshotTemplate1.png" alt="template1" /></div>
-					<div class="radio"><input type="radio" name="options" value="template2"/><img src="../template/images/screenshotTemplate2.png" alt="template2" /></div>	
-				</section>
+				<input type="radio" name="options" value="template1" ><img src="../template/images/screenshotTemplate1.png" alt="template1" width="150"/>
+				<input type="radio" name="options" value="template2"><img src="../template/images/screenshotTemplate2.png" alt="template2" width="150"/>			
 				<input type="button" id="publier" value="Créer la page"/>
-				</fieldset>	
+				</fieldset>
+				
 			</form>	
-			</section>
-			
-			<section id="enregistrement">
-				<p>Voulez-vous enregistrer la page courante ?</p>
-				<input type="button" id="enregistrer" value="Enregistrer"/>
-				<input type="button" id="revenir" value="Revenir à la page"/>
-			</section>
-			
+
 		</section>
-	</section>
+	
 <script src="js/ajoutpage.js"></script>
 <!--script qui affiche l'iframe du upload après utilisation-->
-<script> 
-	function uploader() {
-	  iframe = document.getElementById('iframe');
-	  iframe.src = 'html/fileupload.html';
-	} 
 
-<!--script qui récupère les informations inséreés en cliquant sur le bouton publier-->
-		//~ $("#publier").click(function(){
-		//~ var nomSansEspace=$('#nom').val().replace(/\s/g,"");
-		//~ var contenu= { 
-            //~ 'nom': nomSansEspace,
-          //  //~ 'nom':$("#nom").val(),
-            //~ 'option':$("#form input[type='radio']:checked").val()
-        //~ };
-        //~ $.post("php/envoi.php",contenu)
-		//~ .done(function() {	
-		//	//~ if (!$('#nom').val().replace(/[^a-z0-9_\-]+/,'').length) {	//teste si le nom de page n'est pas vide		
-			//~ if ((nomSansEspace.length==0) || ($('input[type=radio]:checked').length==0)) {        //($('input[name=options]:checked').val().length==0)
-				//~ alert("saisissez un nom de page et choisir un template");
-			//~ }
-			//~ else  {
-				//~ window.location="http://localhost/max/generateurHTMLcopie/admin/index.php?page="+nomSansEspace;			
-			//~ }
-			//~ })
-		 //~ 
-		//~ .fail(function() {
-		  //~ alert( "erreur fatale");
-		//~ });
-	//~ });
 
-		$("#publier").click(function(){
-		$("#enregistrement").show(); 	
-		$("#enregistrer").click(function(){			
-			var nomSansEspace=$('#nom').val().replace(/\s/g,"");
-			var contenu= { 
-            'nom': nomSansEspace,
-            'option':$("#form input[type='radio']:checked").val()
-			};
-			console.log(contenu);
-			$.post("php/envoi.php",contenu)
-			.done(function() {	
-	
-			if ((nomSansEspace.length==0) || ($('input[type=radio]:checked').length==0)) {        //($('input[name=options]:checked').val().length==0)
-				alert("saisissez un nom de page et choisir un template");
-			}
-			else  {
-				window.location="http://localhost/max/generateurHTMLcopie/admin/index.php?page="+nomSansEspace;			
-			}
-			})
-			
-		});
-		 $("#revenir").click(function(){	
-			 $("#enregistrement").hide();
-			 $("#formulaire").hide();
-			});
-		});	
+
 <!--script qui met à jour les nouvelles modifications effectuées sur la page courante-->
+<script> 
 	$("#maj").click(function(){		
 		var contenuMain= { //Fetch form data
-			'nom':"<?php echo $_GET['page']; ?>",
+			'nom':  $("#nom").val(),
             'content': $("#main").html()
         };   
 		$.post("php/majour.php",contenuMain)
 
 		.done(function() {	
+			alert("hig");
 		})
 		 
 		.fail(function() {
@@ -234,51 +159,8 @@ Aloha.ready(function() {
 
 	});
 	
-//affiche le menu de gauche quand bouton menu appuyé
-	$("#menuGauche").click(function(){		
-		$("#editeur").toggle({
-			display:"block"
-		});
-	});
-	
-
-	$("#listePage").click(function(){		
-		$.post("php/listePages.php", function( data ) {
-			$("#liste").html(data);
-			$(".gif").on("click",function(){
-				$.post("php/corbeille.php", function( data ) {
-					$(this.id);
-		
-				})
-			});
-	}, "html")});
-		
-
-	//~ $("#listePage").click(function(){		
-		//~ $.post("php/listePages.php", function( data ) {
-			//~ $("#liste").html(data);
-			//~ $(".gif").on("click",function(){
-				//~ var file= {
-					//~ 'filename': $(this.id)
-				//~ };
-				//~ console.log($(this.id));
-				//~ $.post("php/corbeille.php", file) 
-			//~ });
-	//~ }, "html")});
-
- 
-//~ var $test=$('#listePage')
-//~ function test1()  {
-	//~ console.log("test1");
-//~ }
-//~ $test.on("click",test1);	
-
-	$("#Image").click(function(){		
-		$.post("php/listeImages.php", function( data ) {
-			$("#image").html(data);
-	}, "html")});
-		
 </script>
+
 
 
 <!--extra/numerated-headers, table des matières-->
