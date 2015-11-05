@@ -115,30 +115,32 @@ Aloha.ready(function() {
 
 //~ script pour la création d'une nouvelle page avec attribution d'un nom de page et choix d'un template 
 </script>
+
 	<section id="menuGlobal">
 		<input type="button" id="menuGauche" value="Menu"/>
-		<section id="editeur">	
-<!--Bouton de mise à jour de la page courante-->
 		<input type="button" id="maj" value="Enregistrer"/>
-        <a href="http://localhost/max/generateurHTMLcopie/pages/<?php echo $_GET['page']; ?>.html" target="onglet" id="view">Aperçu</a>	
+		<section id="editeur">
 
-	<!--Création de l'interface de téléchargement d'images-->
-			<iframe src="html/fileupload.html" id="iframe" name="iframe"></iframe> 
-			<a href="html/fileupload.html" target="iframe" onclick="uploader();"><img src="images/reload.png"/></a> 
-			<p id="listeImage"></p>
+<!--Bouton de mise à jour de la page courante-->	
+        <a href="<?php echo str_replace('/admin/index.php?page='.$_GET['page'],'/pages/'.$_GET['page'],$_SERVER['REQUEST_URI']); ?>.html" target="onglet" id="view">Aperçu</a>	
+
+<!--Création de l'interface de téléchargement d'images-->
+		<iframe src="html/fileupload.html" id="iframe" name="iframe"></iframe> 
+		<a href="html/fileupload.html" target="iframe" onclick="uploader();"><img src="images/reload.png"/></a> 
+		<p id="listeImage"></p>
 				
-			<input type="button" id="listePage" value="Liste des pages"/>
-				<ul id="liste">
-				</ul>
+		<input type="button" id="listePage" value="Liste des pages" />
+			<ul id="liste">
+			</ul>
 				
-			<input type="button" id="Image" value="Liste des images uploader"/>
-				<ul id="image">
-				</ul>
+		<input type="button" id="Image" value="Liste des images uploader"/>
+			<ul id="imagefile">
+			</ul>
 				
-			<button id="ajouter" onclick="nouvellePage('formulaire');" >Créer une page</button>
-			<section id="formulaire">
-			<form id="form" method="post">
-				<fieldset>
+		<button id="ajouter" onclick="nouvellePage('formulaire');" >Créer une page</button>
+		<section id="formulaire">
+		<form id="form" method="post">
+			<fieldset>
 				<label>Nom de la page</label>
 				<input type="text" name="nom" id="nom" placeholder="nom de la page"/>
 				<label>Choix du template</label>
@@ -147,14 +149,25 @@ Aloha.ready(function() {
 					<div class="radio"><input type="radio" name="options" value="template2"/><img src="../template/images/screenshotTemplate2.png" alt="template2" /></div>	
 				</section>
 				<input type="button" id="publier" value="Créer la page"/>
-				</fieldset>	
-			</form>	
-			</section>
+			</fieldset>	
+		</form>	
+		</section>
 			
 			<section id="enregistrement">
 				<p>Voulez-vous enregistrer la page courante ?</p>
 				<input type="button" id="enregistrer" value="Enregistrer"/>
 				<input type="button" id="revenir" value="Revenir à la page"/>
+			</section>
+		
+<!--création du menu-->
+		<button id="menu" onclick="nouvellePage('creationMenu');" >Créer le menu</button>
+			<section id="creationMenu">
+				<h2>Création du menu</h2>
+				<p>Pages du site</p>
+					<ul id="listepageasite"></ul>
+				<p>Menu du site</p>
+					<ul id="listemenu"></ul>
+				<input type="button" id="creer" value="Créer le menu"/>
 			</section>
 			
 		</section>
@@ -167,30 +180,7 @@ Aloha.ready(function() {
 	  iframe.src = 'html/fileupload.html';
 	} 
 
-<!--script qui récupère les informations inséreés en cliquant sur le bouton publier-->
-		//~ $("#publier").click(function(){
-		//~ var nomSansEspace=$('#nom').val().replace(/\s/g,"");
-		//~ var contenu= { 
-            //~ 'nom': nomSansEspace,
-          //  //~ 'nom':$("#nom").val(),
-            //~ 'option':$("#form input[type='radio']:checked").val()
-        //~ };
-        //~ $.post("php/envoi.php",contenu)
-		//~ .done(function() {	
-		//	//~ if (!$('#nom').val().replace(/[^a-z0-9_\-]+/,'').length) {	//teste si le nom de page n'est pas vide		
-			//~ if ((nomSansEspace.length==0) || ($('input[type=radio]:checked').length==0)) {        //($('input[name=options]:checked').val().length==0)
-				//~ alert("saisissez un nom de page et choisir un template");
-			//~ }
-			//~ else  {
-				//~ window.location="http://localhost/max/generateurHTMLcopie/admin/index.php?page="+nomSansEspace;			
-			//~ }
-			//~ })
-		 //~ 
-		//~ .fail(function() {
-		  //~ alert( "erreur fatale");
-		//~ });
-	//~ });
-
+//script création de la page et enregistrement de la page courante
 		$("#publier").click(function(){
 		$("#enregistrement").show(); 	
 		$("#enregistrer").click(function(){			
@@ -199,24 +189,23 @@ Aloha.ready(function() {
             'nom': nomSansEspace,
             'option':$("#form input[type='radio']:checked").val()
 			};
-			console.log(contenu);
-			$.post("php/envoi.php",contenu)
-			.done(function() {	
-	
-			if ((nomSansEspace.length==0) || ($('input[type=radio]:checked').length==0)) {        //($('input[name=options]:checked').val().length==0)
-				alert("saisissez un nom de page et choisir un template");
-			}
+			if ((nomSansEspace.length==0) || ($('input[type=radio]:checked').length==0)) {
+					alert("saisissez un nom de page et choisir un template");
+					$("#enregistrement").hide();
+					$("#formulaire").show(); 
+				}
 			else  {
-				window.location="http://localhost/max/generateurHTMLcopie/admin/index.php?page="+nomSansEspace;			
-			}
-			})
-			
+				$.post("php/envoi.php",contenu)
+				window.location="<?php echo str_replace('='.$_GET["page"],'=',$_SERVER['REQUEST_URI']); ?>"+nomSansEspace;			
+				
+				}	
 		});
 		 $("#revenir").click(function(){	
 			 $("#enregistrement").hide();
 			 $("#formulaire").hide();
 			});
 		});	
+		
 <!--script qui met à jour les nouvelles modifications effectuées sur la page courante-->
 	$("#maj").click(function(){		
 		var contenuMain= { //Fetch form data
@@ -231,7 +220,6 @@ Aloha.ready(function() {
 		.fail(function() {
 		  alert( "erreur fatale");
 		});
-
 	});
 	
 //affiche le menu de gauche quand bouton menu appuyé
@@ -241,43 +229,47 @@ Aloha.ready(function() {
 		});
 	});
 	
-
-	$("#listePage").click(function(){		
+//liste les pages crées
+	$("#listePage").click(function(){	
+		$('#liste').addClass("actif")	
+		if ($("#liste").hasClass("actif"))
+			$("#liste").toggle({display:"block"})
 		$.post("php/listePages.php", function( data ) {
 			$("#liste").html(data);
 			$(".gif").on("click",function(){
 				$.post("php/corbeille.php", function( data ) {
 					$(this.id);
-		
 				})
 			});
 	}, "html")});
 		
-
-	//~ $("#listePage").click(function(){		
-		//~ $.post("php/listePages.php", function( data ) {
-			//~ $("#liste").html(data);
-			//~ $(".gif").on("click",function(){
-				//~ var file= {
-					//~ 'filename': $(this.id)
-				//~ };
-				//~ console.log($(this.id));
-				//~ $.post("php/corbeille.php", file) 
-			//~ });
-	//~ }, "html")});
-
- 
-//~ var $test=$('#listePage')
-//~ function test1()  {
-	//~ console.log("test1");
-//~ }
-//~ $test.on("click",test1);	
-
-	$("#Image").click(function(){		
+	$("#Image").click(function(){	
+			$("#imagefile").toggle({display:"block"})	
 		$.post("php/listeImages.php", function( data ) {
-			$("#image").html(data);
+			$("#imagefile").html(data);
 	}, "html")});
 		
+$("#menu").click(function(){
+	$.post("php/pages.php", function( data ) {
+		$("#listepageasite").html(data);
+		$(".me").on("click",function(){
+			//~ $("#listemenu").append('<li><a href="<?php echo str_replace("/admin/index.php?page=".$_GET["page"],"/pages/".$_GET["page"],$_SERVER["REQUEST_URI"]); ?>.html">'+$(this).attr("id")+'</a></li>')
+		$("#listemenu").append('<li><a href="http://192.168.1.12/azerty/pages/page2.html">'+$(this).attr("id")+'</a></li>')
+		})
+		$("#creer").click(function(){
+		var menu={
+			'nom':"<?php echo $_GET['page']; ?>",
+			'liste':$("#listemenu").html()
+		};
+		console.log($("#listemenu").html());
+		$.post("php/creerMenu.php",menu)
+	});
+	}, "html")
+	
+});
+
+
+
 </script>
 
 

@@ -1,6 +1,5 @@
 <?php
 
-//~ if (isset($_GET['page'])) {
 	if($_POST['nom']=="index"){	
 		$main=$_POST['content'];
 		$fim=fopen('../../index.html','r+'); 

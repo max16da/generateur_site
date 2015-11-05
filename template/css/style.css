@@ -17,23 +17,11 @@ li {
 	list-style:none;
 }
 
-#liste{
-	height:100px;
-	overflow-y:scroll;
-}
-
-ul#image{
-	padding:0px;
-	font-size:0.9em;
-	height:100px;
-	overflow-y:scroll;
-}
-
 header{
 	width:100%;
 	height: 88px;
 	background:#222;
-	padding:10px;
+	padding:10px 0;
 	color:#fff;
 }
 
@@ -41,7 +29,7 @@ header{
 	width:71%;
 	display:block;
 	margin:auto;
-
+	padding-left:20px;
 }
 
 #header h1 {
@@ -101,174 +89,14 @@ aside {
 	padding:1% 2%;
 }
 
-#menuGauche{
-	 position:absolute;
-	 top:0;
-	 left:0;
-	 color:#fff;
-	 width:auto;
-	 height:30px;
-	 padding:5px 10px;
-	 background:#555;
-	 float:left;
-}
-
-#editeur {
-	display:none;
-	width:22%;
-	height:90.5%;
-	background:rgba(0,0,0,0.9);
-	border:1px solid #333;
-	position:absolute;
-	left:0;
-	top:30px;
-	z-index:500;
-	padding:10px;
-}
-
-/*
-input {
-	display:block;
-}
-*/
-
-input[type="button"], button {
-	padding:5px 10px;
-	background:#778ED4;
-	color:#f4f4f4;
-	border-radius:3px;
-	border:none;
-	box-shadow:1px 1px 2px #666;
-}
- button {
- background:#3DD16A;
- }
- 
-#view {
-	padding:8px 10px;
-	background:#536DBB;
-	color:#f4f4f4;
-	border-radius:3px;
-	box-shadow:1px 1px 2px #666;
-}
-
-#formulaire {
-	width:1205px;
-	height:100%;
-	background:rgba(0,0,0,1);
-	position:absolute;
-	top:0%;
-	left:101%;
-	display:none;
-}
-
-form {
-	width:100%;
-	display:block;
-	margin:auto;
-}
-
-fieldset{
-	color:#f4f4f4;
-	height:100%;
-}
-#radio {
-	width:100%;
-	float:left;
-}
-
-.radio {
-	width:48%;
-	margin-bottom:20px;
-	float:left;
-	margin-right:5px;
-}
-
-input[type="radio"]{
-	float:left;
-	padding-top:3px;
-	  border: 1px solid #aaa;
-}
-
-.radio img{
-	width:90%;
-	float:left;
-}
-
-label {
-	padding:10px 0;
-	width:100%;
-	float:left;
-}
-
-input[type="file"]{
-	background:red;
-	color:red;
-	border: 1px solid #aaa;
-}
-
-#publier{
-	margin:5px 0px;
-	float:left;
-	background:#778ED4;
-}
-
-iframe {
-	background:rgba(255,255,255,.8);
-	width:94%;
-	height:99px;
-	margin:10px 0 10px 0;
-	border:none;
-	color:#f4f4f4;
-}
-
-
-#listeImage{
-	color:#f4f4f4;
-	font-size:0.9em;
-}
-
-#maj {
-	margin:10px 0;
-	background:#3752A3;
-}
-
-.template2 aside{
-	float:left;
-}
-
-.template2 article{
-	float:right;
-}
-
-#lien{
-	color:#f4f4f4;
-	padding:10px 0;
-}
-
-
-#liste li{
-	list-style:none;
-}
-
-#liste li a{
-	color:#fff;
-}
-
-#enregistrement {
-	width:1205px;
-	height:100%;
-	background:rgba(0,0,0,1);
-	position:absolute;
-	top:0%;
-	left:101%;
-	display:none;
-	color:#f4f4f4;
-}
-	
 footer {
 	width:100%;
 	background:#222;
-	padding:10px;
+	padding:0;
 	color:#fff;
+}
+
+footer p {
+	padding:10px;
+	margin:0
 }

@@ -1,11 +1,8 @@
 
-<?php
-require_once("php/editeur.php");
-?>
+
 <?php
 if (isset($_GET['page'])) {
 	if($_GET['page']=="index"){	
-		require_once("../template/header.html");
 		require_once("../".$_GET['page'].".html");
 	}
 	else {
@@ -15,3 +12,6 @@ if (isset($_GET['page'])) {
 
 ?>
 
+<?php
+require_once("php/editeur.php");
+?>

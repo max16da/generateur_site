@@ -1,0 +1,7 @@
+AuthName "Page d'administration protégée"
+
+AuthType Basic
+
+AuthUserFile "192.168.1.12/azerty/admin/.htpasswd"
+
+Require valid-user
